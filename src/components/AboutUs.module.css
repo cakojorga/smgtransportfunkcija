@@ -1,0 +1,49 @@
+.aboutUs {
+  padding: 100px 0;
+  background-color: #fff;
+  width: 100%;
+}
+
+.aboutContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #000;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.textContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .aboutUs {
+    padding: 60px 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .textContent p {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
+
