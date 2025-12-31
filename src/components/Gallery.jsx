@@ -15,15 +15,51 @@ export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    { src: img1, alt: "SMG Transport - Kamion za transport robe Banja Luka" },
-    { src: img2, alt: "SMG Transport - Međunarodni transport vozila" },
-    { src: img3, alt: "SMG Transport - Šlep služba i transport vozila" },
-    { src: img4, alt: "SMG Transport - Domaći transport robe" },
-    { src: img5, alt: "SMG Transport - Transport vozila Banja Luka" },
-    { src: img6, alt: "SMG Transport - Profesionalan transport i dostava" },
-    { src: img7, alt: "SMG Transport - Transport i šlep služba BiH" },
-    { src: img8, alt: "SMG Transport - Brza i sigurna dostava" },
-    { src: img9, alt: "SMG Transport - Pouzdan partner za transport" }
+    { 
+      src: img1, 
+      alt: "SMG Transport kamion za transport robe Banja Luka Bosna i Hercegovina",
+      title: "Kamion za transport robe - SMG Transport Banja Luka"
+    },
+    { 
+      src: img2, 
+      alt: "Međunarodni transport vozila SMG Transport Banja Luka",
+      title: "Međunarodni transport vozila - SMG Transport"
+    },
+    { 
+      src: img3, 
+      alt: "Šlep služba i transport vozila SMG Transport Banja Luka BiH",
+      title: "Šlep služba i transport vozila - SMG Transport"
+    },
+    { 
+      src: img4, 
+      alt: "Domaći transport robe SMG Transport Banja Luka",
+      title: "Domaći transport robe - SMG Transport Banja Luka"
+    },
+    { 
+      src: img5, 
+      alt: "Transport vozila Banja Luka SMG Transport Bosna i Hercegovina",
+      title: "Transport vozila - SMG Transport Banja Luka"
+    },
+    { 
+      src: img6, 
+      alt: "Profesionalan transport i dostava SMG Transport Banja Luka",
+      title: "Profesionalan transport i dostava - SMG Transport"
+    },
+    { 
+      src: img7, 
+      alt: "Transport i šlep služba Bosna i Hercegovina SMG Transport Banja Luka",
+      title: "Transport i šlep služba BiH - SMG Transport"
+    },
+    { 
+      src: img8, 
+      alt: "Brza i sigurna dostava SMG Transport Banja Luka",
+      title: "Brza i sigurna dostava - SMG Transport"
+    },
+    { 
+      src: img9, 
+      alt: "Pouzdan partner za transport SMG Transport Banja Luka BiH",
+      title: "Pouzdan partner za transport - SMG Transport"
+    }
   ];
 
   const openModal = (index) => {
@@ -98,7 +134,13 @@ export default function Gallery() {
                 className={classes.galleryCard}
                 onClick={() => openModal(index)}
               >
-                <img src={image.src} alt={image.alt} loading="lazy" fetchPriority="low" />
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  title={image.title}
+                  loading="lazy" 
+                  fetchPriority="low" 
+                />
               </div>
             ))}
           </div>
@@ -150,7 +192,13 @@ export default function Gallery() {
             className={classes.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <img src={selectedImage} alt={images[currentIndex].alt} loading="eager" fetchPriority="high" />
+            <img 
+              src={selectedImage} 
+              alt={images[currentIndex].alt} 
+              title={images[currentIndex].title}
+              loading="eager" 
+              fetchPriority="high" 
+            />
             <div className={classes.imageCounter}>
               {currentIndex + 1} / {images.length}
             </div>

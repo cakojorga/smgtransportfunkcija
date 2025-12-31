@@ -24,6 +24,9 @@ export default function Footer() {
               <li>
                 <a href="#kontakt">Kontakt</a>
               </li>
+              <li>
+                <a href="#privacy-policy">Politika Privatnosti</a>
+              </li>
             </ul>
           </div>
 
