@@ -9,6 +9,7 @@
 .nav img {
   max-height: 140px;
   height: 140px;
+  width: auto;
 }
 
 .navList {

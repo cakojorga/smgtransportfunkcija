@@ -1,5 +1,5 @@
 import classes from "./MainNav.module.css";
-import logo from "../assets/logonav.webp";
+
 
 export default function MainNav() {
   return (
@@ -7,8 +7,9 @@ export default function MainNav() {
       <div className="page-container">
         <nav className={classes.nav}>
           <a href="/">
+         
             <img
-              src={logo}
+              src="/logonav.webp"
               alt="SMG Transport Logo - Transport i Šlep Služba Banja Luka"
               fetchPriority="high"
               loading="eager"
