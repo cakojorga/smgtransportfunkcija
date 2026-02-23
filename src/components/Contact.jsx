@@ -1,4 +1,6 @@
 import classes from "./Contact.module.css"
+import {motion} from "framer-motion"
+
 
 export default function Contact() {
   return (
@@ -6,7 +8,9 @@ export default function Contact() {
       <div className="page-container">
         <h2 className={classes.title}>Kontakt</h2>
         <div className={classes.contactContent}>
-          <div className={classes.contactItem}>
+          <motion.div className={classes.contactItem} initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0}}
+                      transition={{duration: 0.5, delay: 0.1}}>
             <div className={classes.iconWrapper}>
               <svg
                 viewBox="0 0 24 24"
@@ -28,9 +32,11 @@ export default function Contact() {
                 Bistrica BB
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={classes.contactItem}>
+          <motion.div className={classes.contactItem} initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0}}
+                      transition={{duration: 0.5, delay: 0.2}}>
             <div className={classes.iconWrapper}>
               <svg
                 viewBox="0 0 24 24"
@@ -49,9 +55,11 @@ export default function Contact() {
                 milan.granolic02@gmail.com
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={classes.contactItem}>
+          <motion.div className={classes.contactItem} initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0}}
+                      transition={{duration: 0.5, delay: 0.3}}>
             <div className={classes.iconWrapper}>
               <svg
                 viewBox="0 0 24 24"
@@ -68,9 +76,11 @@ export default function Contact() {
               <h3>Telefon</h3>
               <a href="tel:+38765213074">+387 65 213 074</a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className={classes.contactItem}>
+          <motion.div className={classes.contactItem} initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0}}
+                      transition={{duration: 0.5, delay: 0.4}}>
             <div className={classes.iconWrapper}>
               <svg
                 viewBox="0 0 24 24"
@@ -87,7 +97,7 @@ export default function Contact() {
               <h3>Ime</h3>
               <p>Milan Granolić</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
