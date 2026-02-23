@@ -21,7 +21,12 @@ export default function Contact() {
             </div>
             <div className={classes.contactInfo}>
               <h3>Lokacija</h3>
-              <a href="https://maps.app.goo.gl/Rh6r1YfYQ5aUXqrXA" target="_blank">Bistrica BB</a>
+              <a
+                href="https://maps.app.goo.gl/Rh6r1YfYQ5aUXqrXA"
+                target="_blank"
+              >
+                Bistrica BB
+              </a>
             </div>
           </div>
 
@@ -38,7 +43,7 @@ export default function Contact() {
                 />
               </svg>
             </div>
-            <div className={classes.contactInfo}>
+            <div className={`${classes.email} ${classes.contactInfo}`}>
               <h3>Email</h3>
               <a href="mailto:milan.granolic02@gmail.com">
                 milan.granolic02@gmail.com

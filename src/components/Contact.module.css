@@ -100,3 +100,14 @@
   }
 }
 
+@media (max-width: 385px) {
+
+  .contactItem {
+    padding: 10px;
+  }
+
+  .email a {
+    font-size: 0.8rem !important;
+  }
+}
+
