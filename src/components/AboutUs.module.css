@@ -31,6 +31,17 @@
   text-align: justify;
 }
 
+.textContent a {
+  color: #333;
+  font-weight: 500;
+  border-bottom: 2px solid #F39C12;
+  transition: color 0.3s ease;
+}
+
+.textContent a:hover {
+  color: #F39C12;
+}
+
 @media (max-width: 768px) {
   .aboutUs {
     padding: 60px 0;

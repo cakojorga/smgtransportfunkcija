@@ -5,7 +5,7 @@
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .contentLine.visible {
@@ -16,9 +16,7 @@
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  align-items: center;
-  justify-items: center;
+  gap: 24px;
 }
 
 .serviceItem {
@@ -26,32 +24,69 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 15px;
+  gap: 18px;
+  padding: 30px 20px 26px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceItem:hover,
+.serviceItem:focus-visible {
+  background-color: #fff;
+  border-color: #fff;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.serviceItem:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.serviceItem:focus-visible {
+  outline: 3px solid #1a1a1a;
+  outline-offset: 3px;
 }
 
 .iconWrapper {
-  width: 100px;
-  height: 100px;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   position: relative;
 }
 
+.serviceItem:hover .iconWrapper,
+.serviceItem:focus-visible .iconWrapper {
+  background-color: #F39C12;
+  transform: scale(1.05);
+}
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #F39C12;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: color 0.3s ease;
+}
+
+.serviceItem:hover .icon,
+.serviceItem:focus-visible .icon {
+  color: #fff;
 }
 
 .icon svg {
@@ -59,45 +94,117 @@
   height: 100%;
 }
 
+.serviceText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .serviceName {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 50px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.more svg {
+  transition: transform 0.3s ease;
+}
+
+.serviceItem:hover .serviceName,
+.serviceItem:focus-visible .serviceName {
+  color: #1a1a1a;
+}
+
+.serviceItem:hover .more,
+.serviceItem:focus-visible .more {
+  color: #fff;
+  background-color: #F39C12;
+}
+
+.serviceItem:hover .more svg,
+.serviceItem:focus-visible .more svg {
+  transform: translateX(4px);
 }
 
 @media (max-width: 968px) {
   .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .servicesGrid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 14px;
   }
-  
+
   .contentLine {
     padding: 40px 0;
-    margin-top: 100px;
+    margin-top: 60px;
   }
-  
+
+  .serviceItem {
+    flex-direction: row;
+    text-align: left;
+    gap: 16px;
+    padding: 16px 18px;
+  }
+
+  .serviceItem:hover,
+  .serviceItem:focus-visible {
+    transform: none;
+  }
+
   .iconWrapper {
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 56px;
   }
-  
+
   .icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
-  
+
+  .serviceText {
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px;
+  }
+
   .serviceName {
     font-size: 0.9rem;
   }
-}
 
+  .more {
+    padding: 0;
+    background: none;
+    font-size: 0.8rem;
+  }
+
+  .serviceItem:hover .more,
+  .serviceItem:focus-visible .more {
+    background: none;
+    color: #F39C12;
+  }
+}

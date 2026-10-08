@@ -1,20 +1,36 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.scrolled {
+  border-bottom-color: #eee;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
 .nav {
   display: flex;
   gap: 25px;
   justify-content: space-between;
   align-items: center;
-  padding-top: 5px;
+  padding: 10px 0;
 }
 
 .nav img {
-  max-height: 140px;
-  height: 140px;
+  height: 90px;
   width: auto;
 }
 
 .navList {
   list-style-type: none;
   display: flex;
+  align-items: center;
   gap: 50px;
   margin: 0;
   padding: 0;
@@ -26,55 +42,252 @@
   cursor: pointer;
 }
 
-.navItem a {
+.navItem a,
+.dropdownToggle {
   color: inherit;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.navItem a:hover {
+.navItem a:hover,
+.dropdownToggle:hover,
+.dropdownToggle[aria-expanded="true"] {
   color: #F39C12;
 }
 
+/* Dropdown "Usluge" */
+
+.hasDropdown {
+  position: relative;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  min-width: 250px;
+  padding: 8px;
+  list-style: none;
+  background-color: #fff;
+  border-top: 3px solid #F39C12;
+  border-radius: 10px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.dropdownOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.dropdown a {
+  display: block;
+  padding: 11px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown a:hover {
+  background-color: #fdf3e3;
+  color: #F39C12;
+}
+
+.backdrop {
+  display: none;
+}
+
+/* Hamburger dugme - vidljivo samo na telefonu */
+
+.menuToggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menuToggle span {
+  position: absolute;
+  left: 10px;
+  width: 24px;
+  height: 2.5px;
+  border-radius: 2px;
+  background-color: #333;
+  transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+}
+
+.menuToggle span:nth-child(1) {
+  top: 14px;
+}
+
+.menuToggle span:nth-child(2) {
+  top: 21px;
+}
+
+.menuToggle span:nth-child(3) {
+  top: 28px;
+}
+
+.menuToggleOpen span:nth-child(1) {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.menuToggleOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuToggleOpen span:nth-child(3) {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
 @media (max-width: 968px) {
-  .nav {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
   .nav img {
-    max-height: 120px;
+    height: 72px;
   }
-  
+
   .navList {
-    gap: 40px;
+    gap: 35px;
   }
-  
+
   .navItem {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 600px) {
   .nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding-top: 15px;
+    gap: 12px;
+    padding: 8px 0;
   }
-  
+
   .nav img {
-    max-height: 100px;
+    height: 52px;
   }
-  
+
+  .menuToggle {
+    display: block;
+  }
+
   .navList {
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: calc(100vh - 69px);
+    overflow-y: auto;
+    padding: 4px 15px 12px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    box-shadow: 0 14px 25px rgba(0, 0, 0, 0.1);
   }
-  
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.35);
+    animation: fadeIn 0.2s ease;
+  }
+
+  .navListOpen {
+    display: flex;
+    animation: slideDown 0.2s ease;
+  }
+
   .navItem {
     font-size: 1.05rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navItem:last-child {
+    border-bottom: 0;
+  }
+
+  .navItem > a,
+  .dropdownToggle {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 14px 0;
+  }
+
+  .dropdown {
+    display: none;
+    position: static;
+    min-width: 0;
+    padding: 0 0 10px 12px;
+    border-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+
+  .dropdownOpen {
+    display: block;
+  }
+
+  .dropdown a {
+    padding: 10px 12px;
+    font-size: 0.98rem;
+    white-space: normal;
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
