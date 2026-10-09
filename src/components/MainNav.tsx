@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import classes from "./MainNav.module.css";
 import logo from "../assets/logonav.jpg";
+import { PhoneIcon } from "./icons";
+import { SITE } from "@/lib/site";
 
 type NavLink = { href: string; label: string };
 
@@ -21,6 +24,7 @@ export default function MainNav({ serviceLinks }: { serviceLinks: NavLink[] }) {
   const navRef = useRef<HTMLElement>(null);
   const servicesButtonRef = useRef<HTMLButtonElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const closeAll = () => {
     setMenuOpen(false);
@@ -61,6 +65,14 @@ export default function MainNav({ serviceLinks }: { serviceLinks: NavLink[] }) {
     };
   }, [menuOpen, servicesOpen]);
 
+  // Na početnoj je zaglavlje providno preko hero fotografije dok se ne skroluje.
+  const overHero = pathname === "/" && !scrolled && !menuOpen;
+  const headerClass = [
+    classes.header,
+    scrolled || menuOpen ? classes.scrolled : "",
+    overHero ? classes.overHero : "",
+  ].join(" ");
+
   const renderLink = (link: NavLink) => (
     <li key={link.href} className={classes.navItem}>
       <Link href={link.href} onClick={closeAll}>
@@ -71,17 +83,31 @@ export default function MainNav({ serviceLinks }: { serviceLinks: NavLink[] }) {
 
   return (
     <>
-      <header className={`${classes.header} ${scrolled || menuOpen ? classes.scrolled : ""}`}>
+      <header className={headerClass}>
         <div className="page-container">
           <nav ref={navRef} className={classes.nav} aria-label="Glavna navigacija">
-            <Link href="/" aria-label="SMG Transport - početna" onClick={closeAll}>
+            <Link
+              href="/"
+              className={classes.logo}
+              aria-label="SMG Transport - početna"
+              onClick={closeAll}
+            >
               <Image
                 src={logo}
                 alt="SMG Transport Logo - Transport i Šlep Služba Banja Luka"
-                height={90}
+                height={56}
                 preload
               />
             </Link>
+
+            <a
+              href={`tel:${SITE.phone}`}
+              className={classes.navCta}
+              aria-label={`Pozovite ${SITE.phoneDisplay}`}
+            >
+              <PhoneIcon width={18} height={18} />
+              <span>{SITE.phoneDisplay}</span>
+            </a>
 
             <button
               type="button"

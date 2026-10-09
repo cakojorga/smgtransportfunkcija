@@ -2,13 +2,15 @@
   background-color: #F39C12;
   padding: 60px 0;
   width: 100%;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  margin-top: 120px;
 }
 
-.contentLine.visible {
+.servicesGrid {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible .servicesGrid {
   opacity: 1;
   transform: translateY(0);
 }
@@ -161,7 +163,6 @@
 
   .contentLine {
     padding: 40px 0;
-    margin-top: 60px;
   }
 
   .serviceItem {

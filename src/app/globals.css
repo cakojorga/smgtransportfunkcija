@@ -4,9 +4,14 @@
   padding: 0;
 }
 
+/* Visina zaglavlja (MainNav) - koriste je hero sekcija i scroll-padding. */
+:root {
+  --header-h: 89px;
+}
+
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 111px;
+  scroll-padding-top: var(--header-h);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,14 +46,14 @@ button {
 }
 
 @media (max-width: 968px) {
-  html {
-    scroll-padding-top: 93px;
+  :root {
+    --header-h: 83px;
   }
 }
 
 @media (max-width: 600px) {
-  html {
-    scroll-padding-top: 69px;
+  :root {
+    --header-h: 67px;
   }
 
   .page-container {
