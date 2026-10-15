@@ -5,6 +5,17 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    // Rezerva: ako domen bez www stigne do aplikacije, trajno ga preusmjeri na www.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "smgtransport.ba" }],
+        destination: "https://www.smgtransport.ba/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

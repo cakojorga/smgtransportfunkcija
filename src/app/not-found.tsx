@@ -4,6 +4,8 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Stranica nije pronađena",
   robots: { index: false },
+  // 404 ne smije naslijediti canonical početne stranice.
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {

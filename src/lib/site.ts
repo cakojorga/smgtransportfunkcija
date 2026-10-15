@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://smgtransport.ba";
+// Glavna (kanonska) adresa sajta. Mora se poklapati sa primarnim domenom na Vercelu.
+export const SITE_URL = "https://www.smgtransport.ba";
 
 export const SITE = {
   name: "SMG Transport",
